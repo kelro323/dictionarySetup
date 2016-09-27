@@ -60,7 +60,7 @@ public class totalDic {
 			System.out.println(sort+"이/가 아닙니다.");
 			return result;
 		}else {
-			if(sort.equals(word[0])||sort.equals(word[1])||sort.equals(word[2])) {
+			if(sort.equals(word[0])||sort.equals(word[1])||sort.equals(word[2])||sort.equals(word[3])||sort.equals(word[4])) {
 				System.out.println("어떤 "+sort+"형에 해당됩니까?");
 			}
 			else{
@@ -186,9 +186,35 @@ public class totalDic {
 				}
 				}
 			} else if(sort.equals(word[3])) {
-				result = "1";
+				int kind;
+				while(true) {
+					System.out.println("자동사<1> // 타동사<2> // (보조)형용사<3> // 자동사+타동사<4> // 자동사+(보조)형용사<5> // 타동사+(보조)형용사<6>");
+					kind = Integer.parseInt(nullHandler(scan.nextLine()));
+					if(kind>=1 && kind<=6) break;
+				}
+				switch(kind) {
+				case 1 : result = "i"; break;
+				case 2 : result = "t"; break;
+				case 3 : result = "j"; break;
+				case 4 : result = "v"; break;
+				case 5 : result = "d"; break;
+				case 6 : result = "k"; break;
+				}
 			} else if(sort.equals(word[4])) {
-				result = "1";
+				int kind;
+				while(true) {
+					System.out.println("자동사<1> // 타동사<2> // (보조)형용사<3> // 자동사+타동사<4> // 자동사+(보조)형용사<5> // 타동사+(보조)형용사<6>");
+					kind = Integer.parseInt(nullHandler(scan.nextLine()));
+					if(kind>=1 && kind<=6) break;
+				}
+				switch(kind) {
+				case 1 : result = "i"; break;
+				case 2 : result = "t"; break;
+				case 3 : result = "j"; break;
+				case 4 : result = "v"; break;
+				case 5 : result = "d"; break;
+				case 6 : result = "k"; break;
+				}
 			} else if(sort.equals(word[5])) { //어간+'내다' 형태가 있는 것 ex)힘내다
 				result = "1";
 			} else {
