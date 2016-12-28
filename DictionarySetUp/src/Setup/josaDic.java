@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class josaDic {
-	public static final String[] word = {"ÁÖ°İ", "º¸¾î°İ", "°üÇü°İ", "¸ñÀû°İ", "¼­¼ú°İ", "ºÎ»ç°İ", "È£°İ", "Á¢¼ÓÁ¶»ç", "±âÅ¸"};
+	public static final String[] word = {"ì£¼ê²©", "ë³´ì–´ê²©", "ê´€í˜•ê²©", "ëª©ì ê²©", "ì„œìˆ ê²©", "ë¶€ì‚¬ê²©", "í˜¸ê²©", "ì ‘ì†ì¡°ì‚¬", "ê¸°íƒ€"};
 	
 	public static Scanner scan = new Scanner(System.in);
 	
@@ -21,7 +21,7 @@ public class josaDic {
 		while(true) {
 			String line = br.readLine();
 			if(line==null) {
-				System.out.println("Á¾·á");
+				System.out.println("ì¢…ë£Œ");
 				break;
 			}
 			String josa = line.trim();
@@ -38,7 +38,7 @@ public class josaDic {
 	private static String check(String josa, String sort) {
 		String result = "0";
 		while(true) {
-			System.out.println(josa+": "+sort+"(À¸)·Î »ç¿ëµË´Ï±î?");
+			System.out.println(josa+": "+sort+"(ìœ¼)ë¡œ ì‚¬ìš©ë©ë‹ˆê¹Œ?");
 			System.out.println("No<0> // Yes<1>");
 			int select = Integer.parseInt(nullHandler(scan.nextLine()));
 			if(select == 0 || select == 1) {
@@ -51,7 +51,7 @@ public class josaDic {
 				}
 			}
 			else {
-				System.out.println("Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù.");
+				System.out.println("ì˜ëª» ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤.");
 			}
 		}
 	}

@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class totalDic {
-	public final static String[] word={"¸í»ç", "µ¿»ç" ,"ºÎ»ç", "´Éµ¿ÅÂ", "¼öµ¿ÅÂ", "³»´Ù-ÇüÅÂ", "Çü¿ë»ç"};//, "NPR", "CNOUNX", "ºÒ±ÔÄ¢"};
+	public final static String[] word={"ëª…ì‚¬", "ë™ì‚¬" ,"ë¶€ì‚¬", "ëŠ¥ë™íƒœ", "ìˆ˜ë™íƒœ", "ë‚´ë‹¤-í˜•íƒœ", "í˜•ìš©ì‚¬"};//, "NPR", "CNOUNX", "ë¶ˆê·œì¹™"};
 	
 	public static Scanner scan = new Scanner(System.in);
 	@SuppressWarnings("resource")
@@ -20,7 +20,7 @@ public class totalDic {
 		while(true) {
 			String line = br.readLine();
 			if(line == null) {
-				System.out.println("Á¾·á");
+				System.out.println("ì¢…ë£Œ");
 				break;
 			}
 			String[] lines = line.split(",");
@@ -30,53 +30,53 @@ public class totalDic {
 				result = result + check(stem, w);
 				System.out.println();
 			}
-			//NPR, CNOUNX°¡ »ç½Ç»ó ¾È ¾²ÀÌ´Â Ç×¸ñÀÌ¶ó ´Ù 00 Ã³¸®ÇÏ°í ºÒ±ÔÄ¢À» µû·Î »©¼­ Ãß°¡
+			//NPR, CNOUNXê°€ ì‚¬ì‹¤ìƒ ì•ˆ ì“°ì´ëŠ” í•­ëª©ì´ë¼ ë‹¤ 00 ì²˜ë¦¬í•˜ê³  ë¶ˆê·œì¹™ì„ ë”°ë¡œ ë¹¼ì„œ ì¶”ê°€
 			String irr = irrCheck(stem);
 			String data = stem+","+result+"00"+irr+"\r\n";
 			fw.write(data);
 			count++;
-			//5°³ ´ÜÀ§·Î ÆÄÀÏ¿¡ ÀÔ·Â
+			//5ê°œ ë‹¨ìœ„ë¡œ íŒŒì¼ì— ì…ë ¥
 			if(count%5 == 0) {
 				fw.close();
-				fw = new FileWriter("totalOut.txt", true); // append °¡´ÉÇüÅÂ·Î
+				fw = new FileWriter("totalOut.txt", true); // append ê°€ëŠ¥í˜•íƒœë¡œ
 			}
 		}
 		fw.close();
 	}
-	//±âÅ¸ Ç×¸ñÀÌ Á¸ÀçÇÒ °æ¿ì Àß¸øµÈ ¼ıÀÚ¸¦ ÀÔ·ÂÇÏ¸é ´Ù ±âÅ¸·Î º¸³»¹ö¸²
-	//±âÅ¸°¡ Á¸ÀçÇÏÁö ¾Ê´Â Ç×¸ñÀÎ °æ¿ì Á¤ÇØÁø ¹üÀ§ÀÇ ¼ıÀÚ¿Ü¿¡´Â ÀÔ·Â ¹ŞÁö ¾Êµµ·Ï Ã³¸®(¹«ÇÑ ·çÇÁ ÀÌ¿ëÇÏ¿©)
-	//nullÀÌ³ª °ø¶õÀ¸·Î ÀÔ·ÂÇÑ °æ¿ì(¿£ÅÍ¸¸ Ä£ °æ¿ì)¿¡´Â Ã¼Å©ÇÏ¿© ±×³É 0À¸·Î ÀÔ·ÂÇÑ °ÍÀ¸·Î °£ÁÖÇÏ¿© Ã³¸® - µû¶ó¼­ yes/no ¼±ÅÃ¿¡¼± ¿£ÅÍ ¿¬Å¸ÇÏ¸é ÀÚµ¿À¸·Î no·Î Ã³¸®
+	//ê¸°íƒ€ í•­ëª©ì´ ì¡´ì¬í•  ê²½ìš° ì˜ëª»ëœ ìˆ«ìë¥¼ ì…ë ¥í•˜ë©´ ë‹¤ ê¸°íƒ€ë¡œ ë³´ë‚´ë²„ë¦¼
+	//ê¸°íƒ€ê°€ ì¡´ì¬í•˜ì§€ ì•ŠëŠ” í•­ëª©ì¸ ê²½ìš° ì •í•´ì§„ ë²”ìœ„ì˜ ìˆ«ìì™¸ì—ëŠ” ì…ë ¥ ë°›ì§€ ì•Šë„ë¡ ì²˜ë¦¬(ë¬´í•œ ë£¨í”„ ì´ìš©í•˜ì—¬)
+	//nullì´ë‚˜ ê³µë€ìœ¼ë¡œ ì…ë ¥í•œ ê²½ìš°(ì—”í„°ë§Œ ì¹œ ê²½ìš°)ì—ëŠ” ì²´í¬í•˜ì—¬ ê·¸ëƒ¥ 0ìœ¼ë¡œ ì…ë ¥í•œ ê²ƒìœ¼ë¡œ ê°„ì£¼í•˜ì—¬ ì²˜ë¦¬ - ë”°ë¼ì„œ yes/no ì„ íƒì—ì„  ì—”í„° ì—°íƒ€í•˜ë©´ ìë™ìœ¼ë¡œ noë¡œ ì²˜ë¦¬
 	
 	private static String check(String stem, String sort) {
 		String result ="0";
 		int select;
 		while(true) {
-			System.out.println(stem+": "+sort+"ÀÔ´Ï±î?");
+			System.out.println(stem+": "+sort+"ì…ë‹ˆê¹Œ?");
 			System.out.println("No<0> // Yes<1>");
 			select = Integer.parseInt(nullHandler(scan.nextLine()));
 			if(select==1 || select ==0) break;
 		}
 		if(select==0) {
-			System.out.println(sort+"ÀÌ/°¡ ¾Æ´Õ´Ï´Ù.");
+			System.out.println(sort+"ì´/ê°€ ì•„ë‹™ë‹ˆë‹¤.");
 			return result;
 		}else {
 			if(sort.equals(word[0])||sort.equals(word[1])||sort.equals(word[2])||sort.equals(word[3])||sort.equals(word[4])) {
-				System.out.println("¾î¶² "+sort+"Çü¿¡ ÇØ´çµË´Ï±î?");
+				System.out.println("ì–´ë–¤ "+sort+"í˜•ì— í•´ë‹¹ë©ë‹ˆê¹Œ?");
 			}
 			else{
-				System.out.println(sort+"ÇüÀÌ ÀÖ½À´Ï´Ù.");
+				System.out.println(sort+"í˜•ì´ ìˆìŠµë‹ˆë‹¤.");
 			}
 			if(sort.equals(word[0])) {
 				int kind;
 				while(true) {
-					System.out.println("ÀÏ¹İ¸í»ç<1> // °íÀ¯¸í»ç<2> // ´ë¸í»ç<3> // ÀÇÁ¸¸í»ç<4> // ¼ö»ç<5>");
+					System.out.println("ì¼ë°˜ëª…ì‚¬<1> // ê³ ìœ ëª…ì‚¬<2> // ëŒ€ëª…ì‚¬<3> // ì˜ì¡´ëª…ì‚¬<4> // ìˆ˜ì‚¬<5>");
 					kind = Integer.parseInt(nullHandler(scan.nextLine()));
 					if(kind>=1 && kind<=5) break;
 				}
 						
 				switch(kind) {
 				case 1 : {
-					System.out.println("»ç¶÷°ü·Ã<1> // µ¿½Ä¹°°ü·Ã<2> // À§Ä¡°ü·Ã<3> // ¼º°İ°ü·Ã<4> // ½Ã°£°ü·Ã<5> // »ê¾÷°ü·Ã<6> // Áö½Ä°ü·Ã<7> // ±âÅ¸<8>");
+					System.out.println("ì‚¬ëŒê´€ë ¨<1> // ë™ì‹ë¬¼ê´€ë ¨<2> // ìœ„ì¹˜ê´€ë ¨<3> // ì„±ê²©ê´€ë ¨<4> // ì‹œê°„ê´€ë ¨<5> // ì‚°ì—…ê´€ë ¨<6> // ì§€ì‹ê´€ë ¨<7> // ê¸°íƒ€<8>");
 					int noun = Integer.parseInt(nullHandler(scan.nextLine()));
 							
 					switch(noun) {
@@ -86,7 +86,7 @@ public class totalDic {
 					case 4 : result = "c"; break;
 					case 5 : result = "t"; break;
 					case 6 : {
-						System.out.println("Á¦Á¶È­ÇĞ<1> // ¼­ºñ½º¾÷<2> // ÀÇ·áÁ¦¾à<3> // ÆÇ¸ÅÀ¯Åë<4> // ±³À°<5> // °Ç¼³<6> // IT<7> // ¹Ìµğ¾îµğÀÚÀÎ<8> // ±İÀ¶<9> // ±âÅ¸<10>");
+						System.out.println("ì œì¡°í™”í•™<1> // ì„œë¹„ìŠ¤ì—…<2> // ì˜ë£Œì œì•½<3> // íŒë§¤ìœ í†µ<4> // êµìœ¡<5> // ê±´ì„¤<6> // IT<7> // ë¯¸ë””ì–´ë””ìì¸<8> // ê¸ˆìœµ<9> // ê¸°íƒ€<10>");
 						int indst = Integer.parseInt(nullHandler(scan.nextLine()));
 								
 						switch(indst) {
@@ -106,7 +106,7 @@ public class totalDic {
 					case 7 : {
 						int know;
 						while(true) {
-							System.out.println("¹ı·ü,°æÁ¦<1> // ÀÚ¿¬°úÇĞ<2> // ¿¹Ã¼´É<3>");
+							System.out.println("ë²•ë¥ ,ê²½ì œ<1> // ìì—°ê³¼í•™<2> // ì˜ˆì²´ëŠ¥<3>");
 							know = Integer.parseInt(nullHandler(scan.nextLine()));
 							if(know>=1 && know<=3) break;
 						}
@@ -121,7 +121,7 @@ public class totalDic {
 					break;
 				}
 				case 2 : {
-					System.out.println("ÀÎ¸í<1> // Áö¸í<2> // ±âÅ¸<3>");
+					System.out.println("ì¸ëª…<1> // ì§€ëª…<2> // ê¸°íƒ€<3>");
 					int proper = Integer.parseInt(nullHandler(scan.nextLine()));
 					switch(proper) {
 					case 1 : result = "h"; break;
@@ -137,7 +137,7 @@ public class totalDic {
 			} else if(sort.equals(word[1])) {
 				int kind;
 				while(true) {
-					System.out.println("ÀÚµ¿»ç<1> // Å¸µ¿»ç<2> // (º¸Á¶)Çü¿ë»ç<3> // ÀÚµ¿»ç+Å¸µ¿»ç<4> // ÀÚµ¿»ç+(º¸Á¶)Çü¿ë»ç<5> // Å¸µ¿»ç+(º¸Á¶)Çü¿ë»ç<6>");
+					System.out.println("ìë™ì‚¬<1> // íƒ€ë™ì‚¬<2> // (ë³´ì¡°)í˜•ìš©ì‚¬<3> // ìë™ì‚¬+íƒ€ë™ì‚¬<4> // ìë™ì‚¬+(ë³´ì¡°)í˜•ìš©ì‚¬<5> // íƒ€ë™ì‚¬+(ë³´ì¡°)í˜•ìš©ì‚¬<6>");
 					kind = Integer.parseInt(nullHandler(scan.nextLine()));
 					if(kind>=1 && kind<=6) break;
 				}
@@ -153,14 +153,14 @@ public class totalDic {
 			} else if(sort.equals(word[2])) {
 				int kind;
 				while(true) {
-					System.out.println("°üÇü»ç<1> // ºÎ»ç<2>");
+					System.out.println("ê´€í˜•ì‚¬<1> // ë¶€ì‚¬<2>");
 					kind = Integer.parseInt(nullHandler(scan.nextLine()));
 					if(kind==1 || kind==2) break;
 				}
 						
 				switch(kind) {
 				case 1 : {
-					System.out.println("Áö½Ã °üÇü»ç<1> // ¼ö °üÇü»ç<2> // ±âÅ¸ °üÇü»ç<3>");
+					System.out.println("ì§€ì‹œ ê´€í˜•ì‚¬<1> // ìˆ˜ ê´€í˜•ì‚¬<2> // ê¸°íƒ€ ê´€í˜•ì‚¬<3>");
 					int busa = Integer.parseInt(nullHandler(scan.nextLine()));
 					switch(busa) {
 					case 1 : result = "d"; break;
@@ -172,7 +172,7 @@ public class totalDic {
 				case 2 : {
 					int busa;
 					while(true) {
-						System.out.println("Á¢¼ÓºÎ»ç<1> // ÀÏ¹İºÎ»ç<2> // ºÎÁ¤Çü ºÎ»ç<3>");
+						System.out.println("ì ‘ì†ë¶€ì‚¬<1> // ì¼ë°˜ë¶€ì‚¬<2> // ë¶€ì •í˜• ë¶€ì‚¬<3>");
 						busa = Integer.parseInt(nullHandler(scan.nextLine()));
 						if(busa>=1 && busa<=3) break;
 					}
@@ -188,7 +188,7 @@ public class totalDic {
 			} else if(sort.equals(word[3])) {
 				int kind;
 				while(true) {
-					System.out.println("ÀÚµ¿»ç<1> // Å¸µ¿»ç<2> // (º¸Á¶)Çü¿ë»ç<3> // ÀÚµ¿»ç+Å¸µ¿»ç<4> // ÀÚµ¿»ç+(º¸Á¶)Çü¿ë»ç<5> // Å¸µ¿»ç+(º¸Á¶)Çü¿ë»ç<6>");
+					System.out.println("ìë™ì‚¬<1> // íƒ€ë™ì‚¬<2> // (ë³´ì¡°)í˜•ìš©ì‚¬<3> // ìë™ì‚¬+íƒ€ë™ì‚¬<4> // ìë™ì‚¬+(ë³´ì¡°)í˜•ìš©ì‚¬<5> // íƒ€ë™ì‚¬+(ë³´ì¡°)í˜•ìš©ì‚¬<6>");
 					kind = Integer.parseInt(nullHandler(scan.nextLine()));
 					if(kind>=1 && kind<=6) break;
 				}
@@ -203,7 +203,7 @@ public class totalDic {
 			} else if(sort.equals(word[4])) {
 				int kind;
 				while(true) {
-					System.out.println("ÀÚµ¿»ç<1> // Å¸µ¿»ç<2> // (º¸Á¶)Çü¿ë»ç<3> // ÀÚµ¿»ç+Å¸µ¿»ç<4> // ÀÚµ¿»ç+(º¸Á¶)Çü¿ë»ç<5> // Å¸µ¿»ç+(º¸Á¶)Çü¿ë»ç<6>");
+					System.out.println("ìë™ì‚¬<1> // íƒ€ë™ì‚¬<2> // (ë³´ì¡°)í˜•ìš©ì‚¬<3> // ìë™ì‚¬+íƒ€ë™ì‚¬<4> // ìë™ì‚¬+(ë³´ì¡°)í˜•ìš©ì‚¬<5> // íƒ€ë™ì‚¬+(ë³´ì¡°)í˜•ìš©ì‚¬<6>");
 					kind = Integer.parseInt(nullHandler(scan.nextLine()));
 					if(kind>=1 && kind<=6) break;
 				}
@@ -215,7 +215,7 @@ public class totalDic {
 				case 5 : result = "d"; break;
 				case 6 : result = "k"; break;
 				}
-			} else if(sort.equals(word[5])) { //¾î°£+'³»´Ù' ÇüÅÂ°¡ ÀÖ´Â °Í ex)Èû³»´Ù
+			} else if(sort.equals(word[5])) { //ì–´ê°„+'ë‚´ë‹¤' í˜•íƒœê°€ ìˆëŠ” ê²ƒ ex)í˜ë‚´ë‹¤
 				result = "1";
 			} else {
 				result = "1";
@@ -237,7 +237,7 @@ public class totalDic {
 		int select;
 		String result="X";
 		while(true) {
-			System.out.println(stem+": "+"ºÒ±ÔÄ¢ ÀÔ´Ï±î?");
+			System.out.println(stem+": "+"ë¶ˆê·œì¹™ ì…ë‹ˆê¹Œ?");
 			System.out.println("No<0> // Yes<1>");
 			select = Integer.parseInt(nullHandler(scan.nextLine()));
 			if(select==1 || select ==0) break;
@@ -245,7 +245,7 @@ public class totalDic {
 		if(select==0) return result;
 		else {
 			while(true) {
-				System.out.println("¤²ºÒ±ÔÄ¢<1/B> // ¤¾ºÒ±ÔÄ¢<2/H> // ¤©ºÒ±ÔÄ¢<3/U> // ¸£ºÒ±ÔÄ¢<4/L> // ¤µºÒ±ÔÄ¢<5/S> // ¤§ºÒ±ÔÄ¢<6/D> // ·¯ºÒ±ÔÄ¢<7/R>");
+				System.out.println("ã…‚ë¶ˆê·œì¹™<1/B> // ã…ë¶ˆê·œì¹™<2/H> // ã„¹ë¶ˆê·œì¹™<3/U> // ë¥´ë¶ˆê·œì¹™<4/L> // ã……ë¶ˆê·œì¹™<5/S> // ã„·ë¶ˆê·œì¹™<6/D> // ëŸ¬ë¶ˆê·œì¹™<7/R>");
 				irr = Integer.parseInt(nullHandler(scan.nextLine()));
 				if(irr>=1 && irr<=7) break;
 			}

@@ -6,9 +6,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-//Áñ°ÜÃ£±â À§Å° »çÀÌÆ® º¸°í ÆÇ´Ü
+//ì¦ê²¨ì°¾ê¸° ìœ„í‚¤ ì‚¬ì´íŠ¸ ë³´ê³  íŒë‹¨
 public class eomiDic {
-public static final String[] word = {"Á¾°á", "¿¬°á", "Àü¼º", "½ÃÁ¦ ¼±¾î¸»", "³ôÀÓ ¼±¾î¸»"};
+public static final String[] word = {"ì¢…ê²°", "ì—°ê²°", "ì „ì„±", "ì‹œì œ ì„ ì–´ë§", "ë†’ì„ ì„ ì–´ë§"};
 	
 	public static Scanner scan = new Scanner(System.in);
 	
@@ -22,7 +22,7 @@ public static final String[] word = {"Á¾°á", "¿¬°á", "Àü¼º", "½ÃÁ¦ ¼±¾î¸»", "³ôÀ
 		while(true) {
 			String line = br.readLine();
 			if(line==null) {
-				System.out.println("Á¾·á");
+				System.out.println("ì¢…ë£Œ");
 				break;
 			}
 			String eomi = line.trim();
@@ -39,7 +39,7 @@ public static final String[] word = {"Á¾°á", "¿¬°á", "Àü¼º", "½ÃÁ¦ ¼±¾î¸»", "³ôÀ
 	private static String check(String eomi, String sort) {
 		String result = "0";
 		while(true) {
-			System.out.println(eomi+": "+sort+"(À¸)·Î »ç¿ëµË´Ï±î?");
+			System.out.println(eomi+": "+sort+"(ìœ¼)ë¡œ ì‚¬ìš©ë©ë‹ˆê¹Œ?");
 			System.out.println("No<0> // Yes<1>");
 			int select = Integer.parseInt(nullHandler(scan.nextLine()));
 			if(select == 0 || select == 1) {
@@ -50,7 +50,7 @@ public static final String[] word = {"Á¾°á", "¿¬°á", "Àü¼º", "½ÃÁ¦ ¼±¾î¸»", "³ôÀ
 					if(sort.equals(word[0])) {
 						int jong;
 						while(true) {
-							System.out.println("Æò¼­Çü<1> // °¨ÅºÇü<2> // ÀÇ¹®Çü<3> // ¸í·ÉÇü<4> // Ã»À¯Çü<5>");
+							System.out.println("í‰ì„œí˜•<1> // ê°íƒ„í˜•<2> // ì˜ë¬¸í˜•<3> // ëª…ë ¹í˜•<4> // ì²­ìœ í˜•<5>");
 							jong = Integer.parseInt(nullHandler(scan.nextLine()));
 							if(jong>=1 && jong<=5) break;
 						}
@@ -67,7 +67,7 @@ public static final String[] word = {"Á¾°á", "¿¬°á", "Àü¼º", "½ÃÁ¦ ¼±¾î¸»", "³ôÀ
 					else if(sort.equals(word[1])) {
 						int yeon;
 						while(true) {
-							System.out.println("´ëµîÀû<1> // Á¾¼ÓÀû<2> // º¸Á¶Àû<3>");
+							System.out.println("ëŒ€ë“±ì <1> // ì¢…ì†ì <2> // ë³´ì¡°ì <3>");
 							yeon = Integer.parseInt(nullHandler(scan.nextLine()));
 							if(yeon>=1 && yeon<=3) break;
 						}
@@ -81,7 +81,7 @@ public static final String[] word = {"Á¾°á", "¿¬°á", "Àü¼º", "½ÃÁ¦ ¼±¾î¸»", "³ôÀ
 					} else if(sort.equals(word[2])){
 						int jeon;
 						while(true) {
-							System.out.println("¸í»çÇü<1> // °üÇü»çÇü<2> // ºÎ»çÇü<3>");
+							System.out.println("ëª…ì‚¬í˜•<1> // ê´€í˜•ì‚¬í˜•<2> // ë¶€ì‚¬í˜•<3>");
 							jeon = Integer.parseInt(nullHandler(scan.nextLine()));
 							if(jeon>=1 && jeon<=3) break;
 						}
@@ -95,7 +95,7 @@ public static final String[] word = {"Á¾°á", "¿¬°á", "Àü¼º", "½ÃÁ¦ ¼±¾î¸»", "³ôÀ
 					} else if(sort.equals(word[3])) {
 						int sije;
 						while(true) {
-							System.out.println("ÇöÀç<1> // °ú°Å<2> // È¸»ó<3> // ÃßÃø<4> // ¹Ì·¡<5> // ¹Ì·¡(ÀÇÁö)<6>");
+							System.out.println("í˜„ì¬<1> // ê³¼ê±°<2> // íšŒìƒ<3> // ì¶”ì¸¡<4> // ë¯¸ë˜<5> // ë¯¸ë˜(ì˜ì§€)<6>");
 							sije = Integer.parseInt(nullHandler(scan.nextLine()));
 							if(sije>=1 && sije<=6) break;
 						}
@@ -112,7 +112,7 @@ public static final String[] word = {"Á¾°á", "¿¬°á", "Àü¼º", "½ÃÁ¦ ¼±¾î¸»", "³ôÀ
 					} else {
 						int rf;
 						while(true) {
-							System.out.println("ÁÖÃ¼ ³ôÀÓ<1> // °ø¼Õ<2>");
+							System.out.println("ì£¼ì²´ ë†’ì„<1> // ê³µì†<2>");
 							rf = Integer.parseInt(nullHandler(scan.nextLine()));
 							if(rf>=1 && rf<=2) break;
 						}
@@ -125,7 +125,7 @@ public static final String[] word = {"Á¾°á", "¿¬°á", "Àü¼º", "½ÃÁ¦ ¼±¾î¸»", "³ôÀ
 				}
 			}
 			else {
-				System.out.println("Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù.");
+				System.out.println("ì˜ëª» ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤.");
 			}
 		}
 		return result;
